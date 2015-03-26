@@ -8,11 +8,30 @@
 </head>
 <body>
 
-<div id="flash_messages">
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, :class => "flash #{key}") %>
-  <% end %>
-</div>
+<div id="toparea">
+
+	<div id="flash_messages">
+	  <% flash.each do |key, value| %>
+	    <%= content_tag(:div, value, :class => "flash #{key}") %>
+	  <% end %>
+	</div>
+
+
+	<ul>
+		<li> <h4>Menu Options</h4> </li>
+		<li><%= link_to("Create new user", new_user_path) %></li>
+		<li> <%= link_to("Login",  {:controller => "access", :action => "login"}) %> </li>
+		<li> <%= link_to("Logout",  {:controller => "access", :action => "logout"}) %></li>
+			<li> <%= link_to("View Users",  {:controller => "users", :action => "index"}) %> </li>
+
+	</ul>
+
+	<% if @username %>
+		<%= "You are logged in as #{@username}" %>
+	<%end%>
+
+</div><!--toparea-->
+
 
 <%= yield %>
 

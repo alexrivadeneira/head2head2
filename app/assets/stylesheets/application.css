@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+ #toparea{
+ 	background-color: red;	
+ 	font-family: sans-serif;
+ 	color: #fff;
+ }
+
+  #toparea a{
+ 	background-color: red;	
+ 	font-family: sans-serif;
+ 	color: #fff;
+ }

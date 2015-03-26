@@ -1,0 +1,14 @@
+<h1>Access#index</h1>
+<p>Find me in app/views/access/index.html.erb</p>
+
+<% @page_title = "Testing_Menu" %>
+<%= @username %>
+
+<div class="menu">
+	<h2> Testing Menu </h2>
+		<div class="identity">Logged In AS:</div>
+			<ul>
+				<li><%= link_to("Logout", :action => "logout") %></li>
+			</ul>
+	</div>
+</div>

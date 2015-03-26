@@ -9,7 +9,7 @@ class CreateGames < ActiveRecord::Migration
   end
 
   def down
-    drop_table :games do |t|
+    drop_table :games
 
   end
 

@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  root "users#index"
+
+  resources :users, only: [:index, :show, :new, :create]
+
+  match ":controller(/:action(/:id))", :via => [:get, :post]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

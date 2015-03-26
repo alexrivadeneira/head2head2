@@ -6,13 +6,13 @@ class CreateAssignments < ActiveRecord::Migration
     	t.integer "user_id"
 
     	t.integer "score"
-    	
+
       t.timestamps null: false
     end
   end
 
   def down
-    drop_table :assignments do |t|
+    drop_table :assignments
   end
 
 end

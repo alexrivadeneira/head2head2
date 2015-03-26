@@ -1,5 +1,6 @@
 class AccessController < ApplicationController
- 
+
+  before_action :confirmed_logged_in, :except => [:login, :attempt_login, :logout]
 
   def index
     @username = session[:username]
@@ -37,14 +38,6 @@ class AccessController < ApplicationController
 
   private
 
-  def confirmed_logged_in
-    unless session[:user_id]
-      flash[:notice] = "Please log in"
-      redirect_to(:action => "login")
-      return false
-    else 
-      return true
-    end
-  end
+
 
 end

@@ -9,6 +9,9 @@ class GamesController < ApplicationController
 	def new
 		@game = Game.new
 		@user_id = session[:user_id]
+
+    @users = User.all
+
 	end
 
 
@@ -19,6 +22,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
+
 
 
     if @game.save

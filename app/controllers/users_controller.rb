@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :confirmed_logged_in, :except => [:new, :index, :create]
+  before_action :confirmed_logged_in, :except => [:new, :index, :create, :show]
 	
-
   def index
 		@users = User.all
 	end
@@ -20,8 +19,31 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+
     if @user.save
-      redirect_to user_path(@user)
+           found_user = User.find(@user.id)
+            authorized_user = found_user.authenticate(params["user"]["password"])
+
+#      if user_params[:username].present? && user_params[:password].present?
+#        found_user = User.where(:name => user_params[:username]).first
+#        flash[:notice] =  "that dint work"
+#        if found_user
+
+#        end
+#      end
+
+      if authorized_user
+          session[:user_id] = authorized_user.id
+          session[:username] = authorized_user.name
+          flash[:notice] = "You are now logged in"
+          redirect_to(:action => "index")
+        else
+          flash[:notice] = "Invalid username/pw combo"
+          redirect_to(:action => "index")
+        end
+
+
+
     else
       render("new")
     end

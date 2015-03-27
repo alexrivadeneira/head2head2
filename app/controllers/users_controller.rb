@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :confirmed_logged_in, :except => [:new]
+  before_action :confirmed_logged_in, :except => [:new, :index, :create]
 	
 
   def index
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 	end
 
 	def new
-		@user = User.new({:name => "default"})
+		@user = User.new
 	end
 
 

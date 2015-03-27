@@ -1,10 +1,14 @@
 class GamesController < ApplicationController
+
+  before_action :confirmed_logged_in
+
 	def index
 		@games = Game.all
 	end
 
 	def new
-		@game = Game.new()
+		@game = Game.new
+		@user_id = session[:user_id]
 	end
 
 
@@ -16,8 +20,9 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
 
+
     if @game.save
-      redirect_to user_path(@game)
+      redirect_to game_path(@game)
     else
       render("new")
     end
@@ -27,7 +32,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-  	params.require(:user).permit(:name, :email, :password)
+  	params.require(:game).permit(:title, :user_id)
   end
 
 end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "users#index"
 
   resources :users, only: [:index, :show, :new, :create]
+  resources :games, only: [:index, :show, :new, :create]
 
   match ":controller(/:action(/:id))", :via => [:get, :post]
 

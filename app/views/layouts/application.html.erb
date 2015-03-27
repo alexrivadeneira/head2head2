@@ -22,12 +22,18 @@
 		<li><%= link_to("Create new user", new_user_path) %></li>
 		<li> <%= link_to("Login",  {:controller => "access", :action => "login"}) %> </li>
 		<li> <%= link_to("Logout",  {:controller => "access", :action => "logout"}) %></li>
-			<li> <%= link_to("View Users",  {:controller => "users", :action => "index"}) %> </li>
+		<li> <%= link_to("View Users",  {:controller => "users", :action => "index"}) %> </li>
+		<li></li>
+		<li> <%= link_to("Create New Game",  {:controller => "games", :action => "new"}) %> </li>	
 
 	</ul>
 
 	<% if session[:username] %>
 		<%= session[:username] %>
+	<%end%>
+
+	<% if session[:user_id] %>
+		<%= session[:user_id] %>
 	<%end%>
 
 </div><!--toparea-->

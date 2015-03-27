@@ -1,23 +1,30 @@
 <h2> Create new Game </h2>
 
-<% @users %>
-<% @users.each do |user| %>
-<%= user.email %>
-<% end %>
+Welcome, your user ID for making this game is <%= @user_id %>
+	<%= form_tag(:action => "make_new_game") do %>
+	<table>
+		<tr>
+			<td><%= label_tag(:name) %></td>
+			<td><%= text_field_tag(:name) %></td>
+		</tr>
+		<tr>
 
-
-
-User session id: <%= @user_id %>
-<%= form_for @game do |f| %>
-
-
-
-	<%= f.label :title %>
-	<%= f.text_field :title %>
+		<h4>Include the following Users</h4>
+		<% @users.each do |user| %>
+			<input type="checkbox" name="players[]" value="<%= user.id %>" /><%= user.name %></input>
 	
-	<%= f.hidden_field :user_id, :value => @user_id %>
+		<% end %>
 
-	<%= f.submit %>
 
-<% end %>
+	<%= hidden_field_tag :user_id, @user_id %>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><%= submit_tag("Create Game!") %></td>
+		</tr>
+	</table>
+	<% end %>
+
+
 

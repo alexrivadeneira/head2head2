@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root "users#index"
 
+  get "games/mygames" => "games#mygames"
   resources :users, only: [:index, :show, :new, :create]
   resources :games, only: [:index, :show, :new, :create]
 

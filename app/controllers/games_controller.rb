@@ -2,6 +2,7 @@ class GamesController < ApplicationController
 
   before_action :confirmed_logged_in
 
+
   def make_new_game
 
     @title = params["name"]
@@ -63,6 +64,22 @@ class GamesController < ApplicationController
     end
 
   end
+
+  def mygames
+
+
+    @user_id = session[:user_id]
+
+    @myuser = User.find(@user_id)
+
+    @mygames = @myuser.games
+
+
+    @games = Game.where(user_id: @user_id)
+
+
+  end
+
 
   private
 

@@ -11,8 +11,10 @@ Welcome, your user ID for making this game is <%= @user_id %>
 
 		<h4>Include the following Users</h4>
 		<% @users.each do |user| %>
-			<input type="checkbox" name="players[]" value="<%= user.id %>" /><%= user.name %></input>
-	
+			
+			<% unless user.id == @user_id %>
+				<input type="checkbox" name="players[]" value="<%= user.id %>" /><%= user.name %></input>
+			<% end %>
 		<% end %>
 
 

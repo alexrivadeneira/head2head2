@@ -1,0 +1,41 @@
+<h1> My Games </h1>
+<h4> Need to include games where you are assigned as well </h4>
+<% if @games %>
+	<% @games.each do |game| %>
+
+	Title: <%= game.title %> <br>
+	Creator User Id: <%= game.user_id %> 
+
+	<br>
+
+	Players (assignments):
+	<% game.assignments.each do |assignment| %> 
+	<%= User.find(assignment.user_id).name %>
+	<% end %>
+	<br><br>
+
+	<% end %>
+<% else %>
+	You don't have any games yet! :(
+<% end %>
+
+
+<h3>MY GAMES</h3>
+<% if @mygames %>
+	<% @mygames.each do |game| %>
+
+	Title: <%= game.title %> <br>
+	Creator User Id: <%= game.user_id %> 
+
+	<br>
+
+	Players (assignments):
+	<% game.assignments.each do |assignment| %> 
+	<%= User.find(assignment.user_id).name %>
+	<% end %>
+	<br><br>
+
+	<% end %>
+<% else %>
+	You don't have any games yet! :(
+<% end %>

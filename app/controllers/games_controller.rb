@@ -3,6 +3,10 @@ class GamesController < ApplicationController
   before_action :confirmed_logged_in
 
 
+  def play
+
+  end
+
   def make_new_game
 
     @title = params["name"]
@@ -48,7 +52,17 @@ class GamesController < ApplicationController
 
 
   def show
+    @user_id = session[:user_id]
     @game = Game.find(params[:id])
+
+    # need to clean up the association here...
+    @game_assignments = @game.assignments
+
+
+  end
+
+  def make_guess
+
   end
 
 

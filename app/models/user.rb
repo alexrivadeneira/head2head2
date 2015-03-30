@@ -10,5 +10,8 @@ class User < ActiveRecord::Base
 	has_many :guesses
 	has_many :assignments
 	has_many :games, through: :assignments
+
+
+
 	# ? has_many :assignments ? 
 end

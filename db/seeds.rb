@@ -12,7 +12,7 @@
 User.create(name: "Alex", email: "alex@email.com", password: "password")
 User.create(name: "Ben", email: "ben@email.com", password: "password")
 User.create(name: "Braphus", email: "braphus@email.com", password: "password")
-User.create(name: "Sarita", email: "sarita@email.com", password: "password")
+User.create(name: "Sarita", email: "sarita@email.com", password: "password", average: 10)
 
 Concept.create(title: "chocolate")
 Concept.create(title: "Osama bin Laden")

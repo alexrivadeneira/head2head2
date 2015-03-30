@@ -4,7 +4,6 @@ class CreateUsers < ActiveRecord::Migration
     	t.string "name", :unique => true, :null => false
     	t.string "email", :unique => true, :null => false
     	t.string "password"
-    	t.integer "average"
       t.timestamps null: false
     end
   end

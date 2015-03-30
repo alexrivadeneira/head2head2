@@ -33,7 +33,7 @@
 		<% ratings_where_already_guessed  << guess.rating %>
 		<% end %>
 
-	<%=ratings_where_already_guessed%>
+	<%ratings_where_already_guessed%>
 
 	<h3>Make your Ratings</h3>
 
@@ -41,7 +41,7 @@
 
 	<% all_ratings = User.find(assignment.user_id).ratings %>
 
-		<%= all_ratings_minus = all_ratings - ratings_where_already_guessed %>
+		<% all_ratings_minus = all_ratings - ratings_where_already_guessed %>
 
 		<div id="guess">
 			<% all_ratings_minus.each do |rating| %>
@@ -88,11 +88,29 @@
 	<h4> The Outcomes </h4>
 
 	<% player_guesses.each do |guess| %>
-		<%= guess.outcome %>
-		<%= guess.rating_id %>
-	    You guessed that <%= User.find(Rating.find(guess.rating_id).user_id).name %> 	<%= Concept.find(Rating.find(guess.rating_id).concept_id).title %><br><br>
+		
 
+		<%= User.find(Rating.find(guess.rating_id).user_id).name %>
 
+		<% if (Rating.find(guess.rating_id).opinion.to_i) == 1 %>
+			liked
+		<% elsif (Rating.find(guess.rating_id).opinion.to_i) == 2 %>
+			disliked
+		<% else %>
+			was neutral about 
+		<% end %>
+
+		<%= Concept.find(Rating.find(guess.rating_id).concept_id).title %>.
+
+		   <br>You were 		
+
+		<% if guess.outcome == true %>
+			correct.
+		<% else %>
+			wrong.
+		<% end %>
+
+		<br><br>
 	<% end %>
 <% else %>
      No game found.

@@ -22,7 +22,9 @@
 	<h3>Players</h3>
 	<% @game_assignments.each do |assignment| %>
 
-		<%= User.find(assignment.user_id).name %>
+		<%= User.find(assignment.user_id).name %> <%= assignment.score %> <br>	
+<br><br>
+
 	<% end %>
 
 

@@ -26,6 +26,7 @@
 	<% if session[:username] %>
 	<ul>
 		<li> Welcome, <%= session[:username] %> </li>
+		SCORE: <%= User.find(session[:user_id]).average %>
 
 				
 		<li> <h4>Menu Options</h4> </li>

@@ -2,15 +2,14 @@
 
 <% @games.each do |game| %>
 
-Title: <%= game.title %> <br>
-Creator User Id: <%= game.user_id %> 
-
+	Title: <%= game.title %> <br>
+	Creator User Id: <%= game.user_id %> 
 <br>
 
-Players (assignments):
-<% game.assignments.each do |assignment| %> 
-<%= User.find(assignment.user_id).name %>
-<% end %>
-<br><br>
+	Players (assignments):
+	<% game.assignments.each do |assignment| %> 
+	<%= User.find(assignment.user_id).name %>
+	<% end %>
+	<br><br>
 
 <% end %>

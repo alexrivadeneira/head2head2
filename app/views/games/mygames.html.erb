@@ -3,7 +3,8 @@
 <% if @games %>
 	<% @games.each do |game| %>
 
-	Title: <%= game.title %> <br>
+	Title: 	<%= link_to game.title, game %>
+ <br>
 	Creator User Id: <%= game.user_id %> 
 
 	<br>

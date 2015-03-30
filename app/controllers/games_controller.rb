@@ -20,17 +20,22 @@ class GamesController < ApplicationController
     # {"utf8"=>"✓", "authenticity_token"=>"oAIz6U1bpe7O0bvkvrT49HLVhNcZooqs4cEI8kE8RkrKc0wZd9sAczaFslc7h8z5AuPXzutpinJoe7mh0gMMMw==", "tag_ids"=>["1", "17", "19"], "name"=>"My new game", "user_id"=>"{:value=>45}", "commit"=>"Create Game!", "controller"=>"games", "action"=>"make_new_game"}
 
 
+
     if @game.save
       @assignment = Assignment.new(user_id: @user_id, game_id: @game.id)
       @assignment.save
-    end
 
-    @players.each do |player|
+      @players.each do |player|
       @assignment = Assignment.new(user_id: player, game_id: @game.id)
       @assignment.save
     end
 
-    render("test")
+
+      redirect_to(:action => "show", id: @game.id)
+    end
+
+
+
 
   end
 
@@ -62,6 +67,40 @@ class GamesController < ApplicationController
   end
 
   def make_guess
+    actual_rating = Rating.find(params["rating_id"])
+    actual_rating_outcome = actual_rating.opinion
+
+    outcome_guess = params["outcome_guess"]
+
+    guessing_user = params["user_id"]
+
+    game_id = params["game_id"]
+
+
+    if actual_rating_outcome.to_i == outcome_guess.to_i
+      Guess.create(user_id: guessing_user, rating_id: actual_rating.id, outcome: true )
+    else 
+      Guess.create(user_id: guessing_user, rating_id: actual_rating.id, outcome: false )
+    end
+
+
+    redirect_to(:action => "show", :id => game_id)
+
+
+    # get the rating info
+
+    # compare it to what the user guessed
+    # make a guess object
+    # update the users score
+
+    # a guess-rating pair must be unique -- cannot repeat, add validation
+
+          # <%= form_tag(:action => "make_guess") do %>
+          # <%= hidden_field_tag :user_id, @user_id %>
+          # <%= hidden_field_tag :concept_id, rating.concept_id %>
+          # <%= hidden_field_tag :rating_id, rating.id %>
+          # <%= submit_tag("They liked") %>
+          # <% end %><br>
 
   end
 

@@ -1,96 +1,109 @@
 
-<% @is_current_user_here = false %> 
 
-<% @game_assignments.each do |assignment| %>
-	<% if @user_id == assignment.user_id %> 
-	<% @is_current_user_here = true %>
-	<% end %>
-	<% User.find(assignment.user_id).name %>
-<% end %>
+<div class="row">
+<div class="col-md-6 col-sm-6">
+	<% @is_current_user_here = false %> 
 
-<% unless !@is_current_user_here %>
-
-	<h1> GAME </h1>
-
-	<h1>Title: <%= @game.title %></h1>
-	<h2>Created by: <%= @game.user_id %></h2>
-
-
-	<h3>Players</h3>
-
-
-	<h3>Players</h3>
 	<% @game_assignments.each do |assignment| %>
-
-		<%= User.find(assignment.user_id).name %> <%= assignment.score %> <br>	
-<br><br>
-
-	<% end %>
-
-
-	<% ratings_where_already_guessed = [] %>
-
-		<% player_guesses = Guess.where(user_id: @user_id) %>
-		<% player_guesses.each do |guess| %>
-		<% ratings_where_already_guessed  << guess.rating %>
+		<% if @user_id == assignment.user_id %> 
+		<% @is_current_user_here = true %>
 		<% end %>
+		<% User.find(assignment.user_id).name %>
+	<% end %>
 
-	<%ratings_where_already_guessed%>
+	<% unless !@is_current_user_here %>
 
-	<h3>Make your Ratings</h3>
+		<h1><%= @game.title %></h1>
+		<h2>by <%= User.find(@game.user_id).name %></h2>
+
+
+		<h3>Players</h3>
+
+		<div class="table-responsive">
+			<table class="table">
+
+			<th> Player </th>
+			<th> Score </th>
+
+			<% @game_assignments.each do |assignment| %>
+				<tr>
+					<td> <%= User.find(assignment.user_id).name %> </td>
+
+					<td><%= assignment.score %> 	</td>
+				</tr>
+			<% end %>
+			</table>
+		</div>
+
+</div>
+</div>
+
+<div class="row">
+<div class="col-xs-6">
+
+<h3>Make your Ratings</h3>
+
+
+		<% ratings_where_already_guessed = [] %>
+
+			<% player_guesses = Guess.where(user_id: @user_id) %>
+			<% player_guesses.each do |guess| %>
+			<% ratings_where_already_guessed  << guess.rating %>
+			<% end %>
+
+		<%ratings_where_already_guessed%>
+
 
 	<% @game_assignments.each do |assignment| %>
-
-	<% all_ratings = User.find(assignment.user_id).ratings %>
+		<% all_ratings = User.find(assignment.user_id).ratings %>
 
 		<% all_ratings_minus = all_ratings - ratings_where_already_guessed %>
 
-		<div id="guess">
 			<% all_ratings_minus.each do |rating| %>
-
 
 				<% unless rating.user_id == @user_id %>
 					<p>What do you think <b><%= User.find(rating.user_id).name %></b>, thinks about <b><%= Concept.find(rating.concept_id).title %></b></p>
 
 						<%= form_tag(:action => "make_guess") do %>
-						<%= hidden_field_tag :user_id, @user_id %>
-						<%= hidden_field_tag :concept_id, rating.concept_id %>
-						<%= hidden_field_tag :rating_id, rating.id %>
-	          			<%= hidden_field_tag :outcome_guess, 1 %>
-	          			<%= hidden_field_tag :game_id, @game.id %>
+							<%= hidden_field_tag :user_id, @user_id %>
+							<%= hidden_field_tag :concept_id, rating.concept_id %>
+							<%= hidden_field_tag :rating_id, rating.id %>
+		          			<%= hidden_field_tag :outcome_guess, 1 %>
+		          			<%= hidden_field_tag :game_id, @game.id %>
 
-						<%= submit_tag("They liked") %>
+							<%= submit_tag("They liked") %>
 						<% end %><br>
 
 						<%= form_tag(:action => "make_guess") do %>
-						<%= hidden_field_tag :user_id, @user_id %>
-						<%= hidden_field_tag :concept_id, rating.concept_id %>
-						<%= hidden_field_tag :rating_id, rating.id %>
-	          			<%= hidden_field_tag :outcome_guess, 2 %>
-	          			<%= hidden_field_tag :game_id, @game.id %>
-						<%= submit_tag("Disliked") %>
+							<%= hidden_field_tag :user_id, @user_id %>
+							<%= hidden_field_tag :concept_id, rating.concept_id %>
+							<%= hidden_field_tag :rating_id, rating.id %>
+		          			<%= hidden_field_tag :outcome_guess, 2 %>
+		          			<%= hidden_field_tag :game_id, @game.id %>
+							<%= submit_tag("Disliked") %>
 						<% end %><br>
 
 						<%= form_tag(:action => "make_guess") do %>
-						<%= hidden_field_tag :user_id, @user_id %>
-						<%= hidden_field_tag :concept_id, rating.concept_id %>
-						<%= hidden_field_tag :rating_id, rating.id %>
-	          			<%= hidden_field_tag :outcome_guess, 3 %>
-	          			<%= hidden_field_tag :game_id, @game.id %>
-						<%= submit_tag("Neutral") %>
+							<%= hidden_field_tag :user_id, @user_id %>
+							<%= hidden_field_tag :concept_id, rating.concept_id %>
+							<%= hidden_field_tag :rating_id, rating.id %>
+		          			<%= hidden_field_tag :outcome_guess, 3 %>
+		          			<%= hidden_field_tag :game_id, @game.id %>
+							<%= submit_tag("Neutral") %>
 						<% end %><br>
 				<% end %>
-
 			<% end %>
-
-		</div><!--guess-->
-
 	<% end %>
 
-	<h4> The Outcomes </h4>
+</div>
+
+<div class="col-xs-6">
+
+	<% if(player_guesses.count > 0) %>
+		<h3> The Outcomes </h3>
+	<% end %>
 
 	<% player_guesses.each do |guess| %>
-		
 
 		<%= User.find(Rating.find(guess.rating_id).user_id).name %>
 
@@ -114,6 +127,11 @@
 
 		<br><br>
 	<% end %>
+
+</div>
+
+
+
 <% else %>
      No game found.
 <% end %>

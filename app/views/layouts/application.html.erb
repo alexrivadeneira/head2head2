@@ -19,7 +19,14 @@
 	</div>
 
 	<div class="row">
+	<div class="col-md-12">
+		<% if session[:user_id] %>
+		Welcome, <%= session[:username] %> [ <%= session[:user_id] %> ]
+		SCORE: <%= User.find(session[:user_id]).average %>
+	<%end%>
+
 	<h1>Head2Head2</h1>
+	</div>
 	</div>
 
 
@@ -64,10 +71,6 @@
 
 
 
-	<% if session[:user_id] %>
-		Welcome, <%= session[:username] %> [ <%= session[:user_id] %> ]
-		SCORE: <%= User.find(session[:user_id]).average %>
-	<%end%>
 
 
 <%= yield %>

@@ -41,5 +41,8 @@ Concept.create(title: "Star Wars")
 Concept.create(title: "dancing")
 
 
+Game.create(title: "Berkeley Group")
+
+
 
 

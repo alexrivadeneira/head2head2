@@ -42,6 +42,9 @@ Concept.create(title: "dancing")
 
 
 Game.create(title: "Berkeley Group")
+Game.create(title: "Berkeley Group2")
+Game.create(title: "Berkeley Group3")
+Game.create(title: "Berkeley Group4")
 
 
 

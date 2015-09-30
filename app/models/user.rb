@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 	has_many :assignments
 	has_many :games, through: :assignments
 
-
+	accepts_nested_attributes_for :assignments
 
 	# ? has_many :assignments ? 
 end

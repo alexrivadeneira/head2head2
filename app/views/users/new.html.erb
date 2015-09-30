@@ -11,6 +11,9 @@
 	<%= f.label :password %>
 	<%= f.text_field :password %> <br /> <br />
 
+	<%= f.collection_select :title @games.all %>
+
+
 	<%= f.submit %>
 
 <% end %>

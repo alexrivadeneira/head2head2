@@ -8,12 +8,6 @@
 
 
 
-
-User.create(name: "Alex", email: "alex@email.com", password: "password")
-User.create(name: "Ben", email: "ben@email.com", password: "password")
-User.create(name: "Braphus", email: "braphus@email.com", password: "password")
-User.create(name: "Sarita", email: "sarita@email.com", password: "password")
-
 Concept.create(title: "chocolate")
 Concept.create(title: "Osama bin Laden")
 Concept.create(title: "guns")
@@ -41,10 +35,10 @@ Concept.create(title: "Star Wars")
 Concept.create(title: "dancing")
 
 
-Game.create(title: "Berkeley Group")
-Game.create(title: "Berkeley Group2")
-Game.create(title: "Berkeley Group3")
-Game.create(title: "Berkeley Group4")
+Game.create(title: "Gryffindor")
+Game.create(title: "Hufflepuff")
+Game.create(title: "Ravenclaw")
+Game.create(title: "Slytherin")
 
 
 

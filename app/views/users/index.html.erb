@@ -1,7 +1,11 @@
 
 <h2>Users Index</h2>
-<% @users.each do |user| %>
-<%=	user.name %>
+<% if @users %>
+	<% @users.each do |user| %>
+	<%=	user.name %>
 
-<br><br>
+	<br><br>
+	<% end %>
+<% else %>
+	Hi
 <% end %>

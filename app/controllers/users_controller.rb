@@ -25,18 +25,19 @@ class UsersController < ApplicationController
                 puts "        "
                     puts "        "
     puts "THESE ARE THE PARAMS", params
-        puts "     ***8   "
+        puts "     ***   "
         puts "       **** "
             puts "       **** "
                 puts "        "
                     puts "        "
+                    puts params["user"]["game_id"]
 
 
 
     if @user.save
            found_user = User.find(@user.id)
             authorized_user = found_user.authenticate(params["user"]["password"])
-
+            Assignment.create(user_id: @user.id, game_id: params["user"]["game_id"])
 
 #      if user_params[:username].present? && user_params[:password].present?
 #        found_user = User.where(:name => user_params[:username]).first

@@ -14,14 +14,11 @@
 
 
 
- <%= fields_for(@user, @user.games.build) do |u| %>
-
-
- <%= f.label :select_your_group %>
-   <%= f.collection_select :id, Game.all, :id, :title %>
-
- <% end %>
-
+<select name="user[game_id]">
+    <% Game.all.each do |game| %>
+        <option value="<%= game.id %>"><%= game.title %></option>
+    <% end %>
+</select>
 
    <%= f.submit %>
 

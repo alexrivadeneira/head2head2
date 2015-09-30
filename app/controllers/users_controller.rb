@@ -30,7 +30,6 @@ class UsersController < ApplicationController
             puts "       **** "
                 puts "        "
                     puts "        "
-    puts user_params["id"]
 
 
 
@@ -68,7 +67,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-  	params.require(:user).permit(:name, :email, :password, :id)
+  	params.require(:user).permit(:name, :email, :password)
   end
 
 end

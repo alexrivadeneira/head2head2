@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
-    @games = Game.all
+
 	end
 
 
@@ -19,11 +19,25 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    puts "        "
+        puts "        "
+            puts "        "
+                puts "        "
+                    puts "        "
+    puts "THESE ARE THE PARAMS", params
+        puts "     ***8   "
+        puts "       **** "
+            puts "       **** "
+                puts "        "
+                    puts "        "
+    puts user_params["id"]
+
 
 
     if @user.save
            found_user = User.find(@user.id)
             authorized_user = found_user.authenticate(params["user"]["password"])
+
 
 #      if user_params[:username].present? && user_params[:password].present?
 #        found_user = User.where(:name => user_params[:username]).first
@@ -54,7 +68,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-  	params.require(:user).permit(:name, :email, :password)
+  	params.require(:user).permit(:name, :email, :password, :id)
   end
 
 end

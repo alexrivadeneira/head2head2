@@ -15,7 +15,8 @@ class ConceptsController < ApplicationController
   	@ratings = @user.ratings
     @user_ratings_count = @ratings.count
 
-    @user_guessed = false
+    #should initially be false, then after user completes 20 questions, please change
+    @user_guessed = @user.rated
 
   	@unrated_concepts = @user_ratings
   	

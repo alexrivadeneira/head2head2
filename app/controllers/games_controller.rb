@@ -60,6 +60,9 @@ class GamesController < ApplicationController
     @user_id = session[:user_id]
     @game = Game.find(params[:id])
 
+    @user_to_update = User.find(@user_id)
+    @user_to_update.update(rated: true)
+
     # need to clean up the association here...
     @game_assignments = @game.assignments
 

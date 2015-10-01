@@ -4,6 +4,10 @@ class UsersController < ApplicationController
 	
   def index
 		@users = User.all
+    @user_id = session[:user_id]
+
+    @user = User.find(@user_id)
+
 	end
 
 	def new

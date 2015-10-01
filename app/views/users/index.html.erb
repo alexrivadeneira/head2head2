@@ -1,11 +1,37 @@
 
-<h2>Users Index</h2>
-<% if @users %>
-	<% @users.each do |user| %>
-	<%=	user.name %>
 
-	<br><br>
+
+<% if @user_id %>
+	<!-- if you don't have any ratings yet show intro page -->
+	<% if @user.ratings.count == 0 %>
+
+
+	<div class="row">
+	<div class="col-md-12 text-center">
+
+	<h2>Welcome!</h2>
+
+	<h4>Test yourself on how well you know your friends and teammates! (and see how well they know you!)</p>
+
+	<h4>Rate 20 items, then start to guess what your friends say!</p>
+
+	 <h3><%= link_to("Get Started",  {:controller => "concepts", :action => "showconcepts"}) %> <span class="glyphicon glyphicon-menu-right"></span></h3>
+
+	</div>
+	</div>
+
+
+	<!-- otherwise show the other users -->
+	<% else %>
+		<% if @users %>
+			<% @users.each do |user| %>
+			<%=	user.name %>
+			<br><br>
+			<% end %>
+		<% else %>
+			Hi
+		<% end %>
 	<% end %>
-<% else %>
-	Hi
 <% end %>
+
+

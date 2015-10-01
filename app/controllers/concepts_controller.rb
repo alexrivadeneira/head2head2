@@ -13,6 +13,9 @@ class ConceptsController < ApplicationController
   	@concepts = @concepts - @user_rated_concepts
 
   	@ratings = @user.ratings
+    @user_ratings_count = @ratings.count
+
+    @user_guessed = false
 
   	@unrated_concepts = @user_ratings
   	

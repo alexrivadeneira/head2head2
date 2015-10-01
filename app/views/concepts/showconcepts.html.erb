@@ -1,48 +1,76 @@
-<h3> ALL concepts </h3>
 
-
-	<% if @concepts.count > 0 %>
-		<% @concepts.each do |concept| %>
-			<div id="rate">
-				<%= concept.title %> <br><br>
-
-				<%= form_tag(:action => "make_rating") do %>
-					<%= hidden_field_tag :user_id, @user.id %>
-					<%= hidden_field_tag :concept_id, concept.id %>
-					<%= hidden_field_tag :opinion, 1 %>
-
-					<%= submit_tag("Like!") %>
-				<% end %>
-
-		<br><br>
-
-				<%= form_tag(:action => "make_rating") do %>
-					<%= hidden_field_tag :user_id, @user.id %>
-					<%= hidden_field_tag :concept_id, concept.id %>
-					<%= hidden_field_tag :opinion, 2 %>
-
-					<%= submit_tag("Dislike!") %>
-				<% end %>
-
-		<br><br>
-				<%= form_tag(:action => "make_rating") do %>
-					<%= hidden_field_tag :user_id, @user.id %>
-					<%= hidden_field_tag :concept_id, concept.id %>
-					<%= hidden_field_tag :opinion, 3 %>
-
-					<%= submit_tag("Neutral") %>
-				<% end %>
-
-
-			 <br><br>
-			</div>
-		<% end %>
-
-	<% else %>
-		<p> You already rated everything..waiting for more stuff to rate</p>
+	
+	<% if @user_ratings_count == 5 %>
+	<h3>Good job - keep rating things! </h3> <br /><br />
 	<% end %>
 
 
+	<% if @user_ratings_count == 10 %>
+	<h3>Keep going - rate 10 more items below! </h3> <br /><br />
+	<% end %>
+
+
+	<% if @user_ratings_count == 20 %>
+
+		<div class="row">
+		<div class="col-md-12 text-center">
+
+		<h2>Great job!</h2>
+
+		<h4>Now see how well you know your friends...</h4
+
+		 <h3><%= link_to("Go Guess",  {:controller => "games", :action => "mygames"}) %> <span class="glyphicon glyphicon-menu-right"></span></h3>
+
+		</div>
+		</div>
+
+
+
+	<% else %>
+
+
+		<% if @concepts.count > 0 %>
+			<% @concepts.each do |concept| %>
+				<div id="rate">
+					<%= concept.title %> <br><br>
+
+					<%= form_tag(:action => "make_rating") do %>
+						<%= hidden_field_tag :user_id, @user.id %>
+						<%= hidden_field_tag :concept_id, concept.id %>
+						<%= hidden_field_tag :opinion, 1 %>
+
+						<%= submit_tag("Like!") %>
+					<% end %>
+
+			<br><br>
+
+					<%= form_tag(:action => "make_rating") do %>
+						<%= hidden_field_tag :user_id, @user.id %>
+						<%= hidden_field_tag :concept_id, concept.id %>
+						<%= hidden_field_tag :opinion, 2 %>
+
+						<%= submit_tag("Dislike!") %>
+					<% end %>
+
+			<br><br>
+					<%= form_tag(:action => "make_rating") do %>
+						<%= hidden_field_tag :user_id, @user.id %>
+						<%= hidden_field_tag :concept_id, concept.id %>
+						<%= hidden_field_tag :opinion, 3 %>
+
+						<%= submit_tag("Neutral") %>
+					<% end %>
+
+
+				 <br><br>
+				</div>
+			<% end %>
+
+		<% else %>
+			<p> You already rated everything..waiting for more stuff to rate</p>
+		<% end %>
+
+	<% end %>
 
 
 

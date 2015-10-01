@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Head2Head2</title>
+  <title>Head-to-Head</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -21,13 +21,13 @@
 	</div>
 
 	<div class="row">
-	<div class="col-md-12">
+	<div class="col-md-12 text-center">
 		<% if session[:user_id] %>
 		Welcome, <%= session[:username] %> [ <%= session[:user_id] %> ]
-		SCORE: <%= User.find(session[:user_id]).average %>
+		Score: <%= User.find(session[:user_id]).average %>
 	<%end%>
 
-	<h1>Head2Head2</h1>
+	<h1>Head-to-Head</h1>
 	</div>
 	</div>
 

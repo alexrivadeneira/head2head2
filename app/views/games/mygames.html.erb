@@ -1,23 +1,19 @@
-<h1> My Games </h1>
-<h4> Need to include games where you are assigned as well </h4>
-
+<h3> Enter Your Game </h3>
 
 <% if @mygames %>
 	<% @mygames.each do |game| %>
 
-	Title: <%= link_to game.title, game %>
+	<h2><span class="glyphicon glyphicon-menu-right"><%= link_to game.title, game %></h2>
  <br>
-	Creator User Id: <%= game.user_id %> 
 
-	<br>
 
-	Players (assignments):
+	<h3>Other players who have already joined:</h3>
 	<% game.assignments.each do |assignment| %> 
-	<%= User.find(assignment.user_id).name %>
+	<h4><%= User.find(assignment.user_id).name %></h4>
 	<% end %>
 	<br><br>
-
 	<% end %>
+
 <% else %>
 	You don't have any games yet! :(
 <% end %>

@@ -13,12 +13,15 @@
    <%= f.text_field :password %><br /><br />
 
 
+  <%= f.label :choose_your_group %> <br /><br />
+  <select name="user[game_id]">
+      <% Game.all.each do |game| %>
+          <option value="<%= game.id %>"><%= game.title %></option>
+      <% end %>
+  </select>
 
-<select name="user[game_id]">
-    <% Game.all.each do |game| %>
-        <option value="<%= game.id %>"><%= game.title %></option>
-    <% end %>
-</select>
+
+<br /> <br />
 
    <%= f.submit %>
 

@@ -4,10 +4,13 @@ class UsersController < ApplicationController
 	
   def index
 		@users = User.all
-    @user_id = session[:user_id]
+    
+    if session[:user_id]
+      @user_id = session[:user_id]
 
-    @user = User.find(@user_id)
-
+      @user = User.find(@user_id)
+    end
+    
 	end
 
 	def new

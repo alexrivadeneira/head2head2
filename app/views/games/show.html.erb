@@ -125,6 +125,12 @@
 			wrong.
 		<% end %>
 
+		<% if Rating.find(guess.rating_id).explanation %>
+
+		<% Rating.find(guess.rating_id).explanation %> 
+		
+		<% end %>
+
 		<br><br>
 	<% end %>
 

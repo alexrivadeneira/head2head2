@@ -28,7 +28,7 @@ class ConceptsController < ApplicationController
   	opinion = params["opinion"]
     explanation = params["explanation"]
   	alex = Rating.create(user_id: user_id, concept_id: concept_id, opinion: opinion, explanation: explanation)
-    puts params
+    puts "-----------PARAMSSSS", params
     
   	redirect_to(:action => "showconcepts")
 

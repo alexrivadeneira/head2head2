@@ -13,6 +13,34 @@
  */
 
 
+ 	.like{
+ 		height: 150px;
+		display: block;
+		position: relative;
+	}
+	.like-explain{
+		height: 50px;
+		display: block;
+		position: absolute;
+		top: 0px;
+		left: 100px;
+		display: none;
+	}
+
+ 	.dislike{
+ 		height: 150px;
+		display: block;
+		position: relative;
+	}
+	.dislike-explain{
+		height: 50px;
+		display: block;
+		position: absolute;
+		top: 0px;
+		left: 100px;
+		display: none;
+	}
+
 
 @import "bootstrap-sprockets";
 @import "bootstrap";

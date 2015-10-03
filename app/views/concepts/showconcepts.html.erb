@@ -31,8 +31,11 @@
 
 		<% if @concepts.count > 0 %>
 			<% @concepts.each do |concept| %>
-				<div id="rate">
-					<%= concept.title %> <br><br>
+					<h4><%= concept.title %> </h4><br><br>
+
+
+
+			<%= form_tag(:controller => "ratings", :action => "create") do %>
 
 					<%= form_tag(:action => "make_rating") do %>
 						<%= hidden_field_tag :user_id, @user.id %>
@@ -40,9 +43,9 @@
 						<%= hidden_field_tag :opinion, 1 %>
 
 						<%= submit_tag("Like!") %>
-					<% end %>
 
-			<br><br>
+
+								<br><br>
 
 					<%= form_tag(:action => "make_rating") do %>
 						<%= hidden_field_tag :user_id, @user.id %>
@@ -52,18 +55,21 @@
 						<%= submit_tag("Dislike!") %>
 					<% end %>
 
-			<br><br>
-					<%= form_tag(:action => "make_rating") do %>
-						<%= hidden_field_tag :user_id, @user.id %>
-						<%= hidden_field_tag :concept_id, concept.id %>
-						<%= hidden_field_tag :opinion, 3 %>
-
-						<%= submit_tag("Neutral") %>
+	
 					<% end %>
-			<br><br>
+
+			<p>Explain yourself</p>
+			<%= text_area_tag(:explanation, nil, :size => "88x2") %><br />  
+ 
+
+			<% end %>
+
+
+
+				
+
 
 			
-				</div>
 			<% end %>
 
 		<% else %>

@@ -1,6 +1,5 @@
 <h2> Create new Game </h2>
 
-Welcome, your user ID for making this game is <%= @user_id %>
 	<%= form_tag(:action => "make_new_game") do %>
 	<table>
 		<tr>
@@ -13,7 +12,7 @@ Welcome, your user ID for making this game is <%= @user_id %>
 		<% @users.each do |user| %>
 			
 			<% unless user.id == @user_id %>
-				<input type="checkbox" name="players[]" value="<%= user.id %>" /><%= user.name %></input>
+				<h4><input type="checkbox" name="players[]" value="<%= user.id %>" /> <%= user.name %></input></h4>
 			<% end %>
 		<% end %>
 
@@ -22,8 +21,10 @@ Welcome, your user ID for making this game is <%= @user_id %>
 
 		</tr>
 		<tr>
+
+				<h4>...and name the Group</h4>
 			<td>&nbsp;</td>
-			<td><%= submit_tag("Create Game!") %></td>
+			<td><%= submit_tag("Create Group!") %></td>
 		</tr>
 	</table>
 	<% end %>

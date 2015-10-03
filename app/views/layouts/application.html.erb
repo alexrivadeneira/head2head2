@@ -57,7 +57,9 @@
                 	<li><%= link_to("Logout",  {:controller => "access", :action => "logout"}) %></li>
                 	<li> <%= link_to("View Users",  {:controller => "users", :action => "index"}) %></li>
                		<li><%= link_to("GUESS",  {:controller => "games", :action => "mygames"}) %></li>
-                	<li><%= link_to("RATE",  {:controller => "concepts", :action => "showconcepts"}) %></li>                          
+                	<li><%= link_to("RATE",  {:controller => "concepts", :action => "showconcepts"}) %></li>  
+                  <li><%= link_to("My Games",  {:controller => "games", :action => "mygames"}) %></li>
+                  <li><%= link_to("New Game",  {:controller => "games", :action => "new"}) %></li>                                                               
                 	</ul>
 
 				<% else %>

@@ -57,6 +57,10 @@
 
 		<% all_ratings_minus = all_ratings - ratings_where_already_guessed %>
 
+		<% if all_ratings_minus.count == 0 %>
+			Looks like your friends need to rate more things so you can keep playing!
+		<% end %>
+
 			<% all_ratings_minus.each do |rating| %>
 
 				<% unless rating.user_id == @user_id %>

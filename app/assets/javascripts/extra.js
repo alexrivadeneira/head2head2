@@ -15,6 +15,21 @@ $(document).ready(function(){
 
 	$(".dislike").mouseleave(function() 
 		{ $(".dislike-explain").css('display','none'); 
+
 	});
+
+
+$.fn.reverseChildren = function() {
+  return this.each(function(){
+    var $this = $(this);
+    $this.children().each(function(){ $this.prepend(this) });
+  });
+};
+
+$('#outcomes').reverseChildren();
+
+
+
+
 
 });

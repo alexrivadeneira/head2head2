@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     if session[:user_id]
       @user_id = session[:user_id]
 
+  
       @user = User.find(@user_id)
     end
     

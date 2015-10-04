@@ -103,32 +103,73 @@
 	<% player_guesses.each do |guess| %>
 
 		<li class="outcome-result">
-		<%= User.find(Rating.find(guess.rating_id).user_id).name %>
 
 		<% if (Rating.find(guess.rating_id).opinion.to_i) == 1 %>
-			liked
-		<% elsif (Rating.find(guess.rating_id).opinion.to_i) == 2 %>
-			disliked
-		<% else %>
-			was neutral about 
-		<% end %>
+			<%= User.find(Rating.find(guess.rating_id).user_id).name %> liked
 
-		<%= Concept.find(Rating.find(guess.rating_id).concept_id).title %>.
+			<%= Concept.find(Rating.find(guess.rating_id).concept_id).title %>.
 
-		<% if Rating.find(guess.rating_id).explanation %>
+			<% if Rating.find(guess.rating_id).explanation %>
 
 			They said "<%= Rating.find(guess.rating_id).explanation %>."
-		
-		<% end %>
 
-		   <br>You were 		
+			<% end %>
+		 You were 		
 
 		<% if guess.outcome == true %>
 			correct.
 		<% else %>
 			wrong.
 		<% end %>
-		</li><!-- /outcome-result-->
+		</li>
+
+		<% elsif (Rating.find(guess.rating_id).opinion.to_i) == 2 %>
+			<%= User.find(Rating.find(guess.rating_id).user_id).name %> disliked
+
+			<%= Concept.find(Rating.find(guess.rating_id).concept_id).title %>.
+
+			<% if Rating.find(guess.rating_id).explanation %>
+
+			They said "<%= Rating.find(guess.rating_id).explanation %>."
+
+			<% end %>
+		 You were 		
+
+		<% if guess.outcome == true %>
+			correct.
+		<% else %>
+			wrong.
+		<% end %>
+		</li>
+
+
+
+		<% else %>
+			<%= User.find(Rating.find(guess.rating_id).user_id).name %> was neutral about
+
+			<%= Concept.find(Rating.find(guess.rating_id).concept_id).title %>.
+
+			<% if Rating.find(guess.rating_id).explanation %>
+
+			They said "<%= Rating.find(guess.rating_id).explanation %>."
+
+			<% end %>
+		 You were 		
+
+		<% if guess.outcome == true %>
+			correct.
+		<% else %>
+			wrong.
+		<% end %>
+		</li>
+		<% end %>
+
+	
+
+		
+	
+
+		<!-- /outcome-result-->
 
 
 		<br><br>

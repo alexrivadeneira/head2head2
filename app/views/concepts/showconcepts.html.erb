@@ -1,23 +1,29 @@
 
-	
-	<% if @user_ratings_count == 5 %>
-	<h3>Good job - keep rating things! </h3> <br /><br />
-	<% end %>
+	<!-- messages to user at different milestones -->
 
+	<% if @user_ratings_count == 5 %>
+		<div class="alert alert-success">
+  			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+ 		 	<strong>Good job!</strong> Keep rating things!
+		</div>
+	<% end %>
 
 	<% if @user_ratings_count == 10 %>
-	<h3>Keep going - rate 10 more items below! </h3> <br /><br />
+		<div class="alert alert-success">
+  			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+ 		 	<strong>Keep going!</strong> Rate 10 more items below.
+		</div>	
 	<% end %>
 
-
 	<% if @user_ratings_count == 20 && @user_guessed == false %>
+
 
 		<div class="row">
 		<div class="col-md-12 text-center">
 
 		<h2>Great job!</h2>
 
-		<h4>Now see how well you know your friends...</h4
+		<h4>Now see how well you know your friends...</h4>
 
 		 <h3><%= link_to("Go Guess",  {:controller => "games", :action => "mygames"}) %> <span class="glyphicon glyphicon-menu-right"></span></h3>
 
@@ -27,6 +33,7 @@
 
 
 	<% else %>
+
 
 
 		<% if @concepts.count > 0 %>
@@ -77,6 +84,7 @@
 
 			
 			<% end %>
+
 
 		<% else %>
 			<p> You already rated everything..waiting for more stuff to rate</p>

@@ -17,8 +17,11 @@
 
 	<div id="flash_messages">
 	  <% flash.each do |key, value| %>
+    <div class="well well-lg">
 	    <%= content_tag(:div, value, :class => "flash #{key}") %>
-	  <% end %>
+	    </div>
+    <% end %>
+
 	</div>
 
 	<div class="row">

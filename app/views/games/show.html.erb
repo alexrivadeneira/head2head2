@@ -11,7 +11,7 @@
 		<% User.find(assignment.user_id).name %>
 	<% end %>
 
-	<% unless !@is_current_user_here %>
+	<% if @is_current_user_here %>
 
 		<h1><%= @game.title %></h1>
 

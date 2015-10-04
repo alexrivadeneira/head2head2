@@ -101,60 +101,64 @@
 	<ul id="outcomes">
 
 	<% player_guesses.each do |guess| %>
-
-
-		<% if guess.outcome == true %>
-
-
-			<li class="outcome-result">
-				<div class="alert alert-success ">
-  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<% if (Rating.find(guess.rating_id).opinion.to_i) == 1 %>
-						<%= User.find(Rating.find(guess.rating_id).user_id).name %> liked
-
-					<% elsif (Rating.find(guess.rating_id).opinion.to_i) == 2 %>
-						<%= User.find(Rating.find(guess.rating_id).user_id).name %> disliked
-
-					<% end %>
-
-					<%= Concept.find(Rating.find(guess.rating_id).concept_id).title %>.
-
-					<% if Rating.find(guess.rating_id).explanation %>
-
-						They said <strong>"<%= Rating.find(guess.rating_id).explanation %>."</strong>
-
-					<% end %>
-				You were correct.	
-				</div>
-		 
-		 	
 		
+		<% if guess.game_id == @game.id %>
 
-		<% else %>
+			<% if guess.outcome == true %>
 
-			<li class="outcome-result">
-				<div class="alert alert-danger ">
-  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<% if (Rating.find(guess.rating_id).opinion.to_i) == 1 %>
-						<%= User.find(Rating.find(guess.rating_id).user_id).name %> liked
 
-					<% elsif (Rating.find(guess.rating_id).opinion.to_i) == 2 %>
-						<%= User.find(Rating.find(guess.rating_id).user_id).name %> disliked
+				<li class="outcome-result">
+					<div class="alert alert-success ">
+	  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<% if (Rating.find(guess.rating_id).opinion.to_i) == 1 %>
+							<%= User.find(Rating.find(guess.rating_id).user_id).name %> liked
 
-					<% end %>
+						<% elsif (Rating.find(guess.rating_id).opinion.to_i) == 2 %>
+							<%= User.find(Rating.find(guess.rating_id).user_id).name %> disliked
 
-					<%= Concept.find(Rating.find(guess.rating_id).concept_id).title %>.
+						<% end %>
 
-					<% if Rating.find(guess.rating_id).explanation %>
+						<%= Concept.find(Rating.find(guess.rating_id).concept_id).title %>.
 
-						They said <strong>"<%= Rating.find(guess.rating_id).explanation %>."</strong>
+						<% if Rating.find(guess.rating_id).explanation %>
 
-					<% end %>
-		
-		 		You were wrong.	
-		 		</div>			
+							They said <strong>"<%= Rating.find(guess.rating_id).explanation %>."</strong>
 
-		<% end %>
+						<% end %>
+					You were correct.	
+					</div>
+			 
+			 	
+			
+
+			<% else %>
+
+				<li class="outcome-result">
+					<div class="alert alert-danger ">
+	  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<% if (Rating.find(guess.rating_id).opinion.to_i) == 1 %>
+							<%= User.find(Rating.find(guess.rating_id).user_id).name %> liked
+
+						<% elsif (Rating.find(guess.rating_id).opinion.to_i) == 2 %>
+							<%= User.find(Rating.find(guess.rating_id).user_id).name %> disliked
+
+						<% end %>
+
+						<%= Concept.find(Rating.find(guess.rating_id).concept_id).title %>.
+
+						<% if Rating.find(guess.rating_id).explanation %>
+
+							They said <strong>"<%= Rating.find(guess.rating_id).explanation %>."</strong>
+
+						<% end %>
+			
+			 		You were wrong.	
+			 		</div>			
+
+			<% end %>
+
+
+		<% end %>	
 		</li>
 
 

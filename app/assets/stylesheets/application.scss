@@ -12,6 +12,9 @@
  *
  */
 
+
+
+
 	img.logo{
 		margin: 0 auto;
 		max-width: 150px;
@@ -58,6 +61,19 @@
 	.group-container{
 		padding: 10px;
 	}
+ 
+ 	[class*=col-] {
+  height: 100%;
+	}
+
+	.group-box{
+	height: 450px;
+	padding: 5px;
+	background-color: transparent;
+	}
+
+
+
 
 @import "bootstrap-sprockets";
 @import "bootstrap";

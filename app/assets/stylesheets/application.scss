@@ -49,6 +49,16 @@
 	list-style: none;
 	}
 
+	.group{
+		height: 350px;
+		overflow: hidden;
+		
+	}
+
+	.group-container{
+		padding: 10px;
+	}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 

@@ -4,4 +4,7 @@ class Guess < ActiveRecord::Base
 
 	belongs_to :user
 	belongs_to :rating
+
+	has_many :chats
+	has_many :comments, through: :chats
 end

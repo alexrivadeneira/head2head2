@@ -73,7 +73,10 @@
 	}
 
 
-
+	#outcomes{
+	position: fixed;
+	top: 0;
+	}
 
 @import "bootstrap-sprockets";
 @import "bootstrap";

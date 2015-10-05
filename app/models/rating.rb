@@ -7,4 +7,7 @@ class Rating < ActiveRecord::Base
 	belongs_to :user
 
 	has_many :guesses
+
+	has_many :chats
+	has_many :comments, through: :chats
 end

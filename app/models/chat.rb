@@ -1,6 +1,5 @@
 class Chat < ActiveRecord::Base
-	belongs_to :guess
-	belongs_to :user
+	belongs_to :rating
 
 	has_many :comments
 end

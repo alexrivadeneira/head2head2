@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "users#index"
+  root "access#index"
 
   get "games/mygames" => "games#mygames"
   resources :users, only: [:index, :show, :new, :create]

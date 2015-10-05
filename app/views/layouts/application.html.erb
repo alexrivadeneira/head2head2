@@ -24,12 +24,15 @@
 
 	</div>
 
+
+
 	<div class="row">
   	<div class="col-md-12">
   		<% if session[:user_id] %>
   		<h5>Welcome, <%= session[:username] %> </h5>
   		<h5>Score: <%= User.find(session[:user_id]).average %></h5>
   	<%end%>
+
 
     <%= image_tag 'heads_logo.png', :class => "img-responsive logo" %>
   	<span class="text-center"><h1>Head-to-Head</h1></span>

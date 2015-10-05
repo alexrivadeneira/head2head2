@@ -26,13 +26,15 @@ ActiveRecord::Schema.define(version: 20151004183555) do
 
   create_table "chats", force: :cascade do |t|
     t.integer  "comment_id"
-    t.integer  "guess_id"
+    t.integer  "rating_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
     t.string   "text",       null: false
+    t.integer  "chat_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,8 +72,8 @@ ActiveRecord::Schema.define(version: 20151004183555) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
+    t.string   "name",                            null: false
+    t.string   "email",                           null: false
     t.integer  "average",         default: 0
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false

@@ -132,10 +132,12 @@
 							They said <strong>"<%= Rating.find(guess.rating_id).explanation %>."</strong>
 						You were correct.
 
-							<% Rating.find(guess.rating_id).chats.each do |chat| %>
-							<div class="well"><p><strong><%= User.find(chat.user_id).name %></strong></p>
-							<p> &nbsp;&nbsp;&nbsp;&nbsp;<%= chat.text %></p>
-							</div>
+<% Rating.find(guess.rating_id).chats.each do |chat| %>
+							<% if chat.game_id == @game.id %>
+								<div class="well"><p><strong><%= User.find(chat.user_id).name %></strong></p>
+								<p> &nbsp;&nbsp;&nbsp;&nbsp;<%= chat.text %></p>
+								</div>
+							<% end %>
 							<% end %>
 
 
@@ -191,9 +193,11 @@
 						You were wrong.
 
 							<% Rating.find(guess.rating_id).chats.each do |chat| %>
-							<div class="well"><p><strong><%= User.find(chat.user_id).name %></strong></p>
-							<p> &nbsp;&nbsp;&nbsp;&nbsp;<%= chat.text %></p>
-							</div>
+							<% if chat.game_id == @game.id %>
+								<div class="well"><p><strong><%= User.find(chat.user_id).name %></strong></p>
+								<p> &nbsp;&nbsp;&nbsp;&nbsp;<%= chat.text %></p>
+								</div>
+							<% end %>
 							<% end %>
 
 

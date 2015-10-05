@@ -2,7 +2,17 @@ class GamesController < ApplicationController
 
   before_action :confirmed_logged_in
 
+  def make_chat
+    @comment_user = params["user_id"]
+    @comment_rating = params["rating_id"]
+    @comment_text = params["text"]
+    @comment_game_id = params["game_id"]
 
+    Chat.create(rating_id: @comment_rating, user_id: @comment_user, text: @comment_text)
+    
+    redirect_to(:action => "show", id: @comment_game_id)
+  end
+  
   def play
 
   end

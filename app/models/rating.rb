@@ -9,5 +9,5 @@ class Rating < ActiveRecord::Base
 	has_many :guesses
 
 	has_many :chats
-	has_many :comments, through: :chats
+
 end

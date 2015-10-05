@@ -126,12 +126,43 @@
 
 						<% if Rating.find(guess.rating_id).explanation %>
 
+
+				<!-- startcomment area -->
+
 							They said <strong>"<%= Rating.find(guess.rating_id).explanation %>."</strong>
+						You were correct.
+
+							<% Rating.find(guess.rating_id).chats.each do |chat| %>
+							<div class="well"><p><strong><%= User.find(chat.user_id).name %></strong></p>
+							<p> &nbsp;&nbsp;&nbsp;&nbsp;<%= chat.text %></p>
+							</div>
+							<% end %>
+
+
+							<% @rating_for_comment = Rating.find(guess.rating_id).id %>
+
+							<%= form_tag(:action => "make_chat") do %>
+							<%= hidden_field_tag :user_id, @user_id %>
+							<%= hidden_field_tag :rating_id, @rating_for_comment %>
+							<%= hidden_field_tag :game_id, @game.id %>
+		         			 <%= text_field_tag :text %>
+							<%= submit_tag("Comment!") %>
+
+							<% end %>
+
+
+			<!-- end comment -->
 
 						<% end %>
 
 
-					You were correct.	
+
+
+					
+					
+
+
+
 					</div>
 			 
 			 	
@@ -154,11 +185,35 @@
 
 						<% if Rating.find(guess.rating_id).explanation %>
 
+				<!-- startcomment area -->
+
 							They said <strong>"<%= Rating.find(guess.rating_id).explanation %>."</strong>
+						You were wrong.
+
+							<% Rating.find(guess.rating_id).chats.each do |chat| %>
+							<div class="well"><p><strong><%= User.find(chat.user_id).name %></strong></p>
+							<p> &nbsp;&nbsp;&nbsp;&nbsp;<%= chat.text %></p>
+							</div>
+							<% end %>
+
+
+							<% @rating_for_comment = Rating.find(guess.rating_id).id %>
+
+							<%= form_tag(:action => "make_chat") do %>
+							<%= hidden_field_tag :user_id, @user_id %>
+							<%= hidden_field_tag :rating_id, @rating_for_comment %>
+							<%= hidden_field_tag :game_id, @game.id %>
+		         			 <%= text_field_tag :text %>
+							<%= submit_tag("Comment!") %>
+
+							<% end %>
+
+
+			<!-- end comment -->
 
 						<% end %>
 			
-			 		You were wrong.	
+			 		
 			 		</div>			
 
 			<% end %>

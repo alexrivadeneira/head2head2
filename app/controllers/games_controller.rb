@@ -81,6 +81,10 @@ class GamesController < ApplicationController
 
 
     if actual_rating_outcome.to_i == outcome_guess.to_i
+      game_to_update = Game.find(game_id)
+      game_to_update.total += 1
+      game_to_update.save
+
       Guess.create(user_id: guessing_user, rating_id: actual_rating.id, outcome: true, game_id: game_id )
       user_update = User.find(guessing_user)
       user_update.average += 1

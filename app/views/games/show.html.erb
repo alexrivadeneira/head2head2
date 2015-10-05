@@ -105,11 +105,15 @@
 		<% if guess.game_id == @game.id %>
 
 			<% if guess.outcome == true %>
-
+				
 
 				<li class="outcome-result">
+
+
 					<div class="alert alert-success ">
 	  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+	  	
 						<% if (Rating.find(guess.rating_id).opinion.to_i) == 1 %>
 							<%= User.find(Rating.find(guess.rating_id).user_id).name %> liked
 
@@ -125,6 +129,8 @@
 							They said <strong>"<%= Rating.find(guess.rating_id).explanation %>."</strong>
 
 						<% end %>
+
+
 					You were correct.	
 					</div>
 			 

@@ -78,9 +78,16 @@
 	top: 0;
 	}
 
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 *{ 
 	font-family: Helvetica;
+}
+
+
+.well{
+	padding: 5px;
 }

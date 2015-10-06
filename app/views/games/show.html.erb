@@ -29,7 +29,7 @@
 				<tr>
 					<td> <%= User.find(assignment.user_id).name %> </td>
 
-					<td><%= assignment.score %> 	</td>
+					<td><span class="badge"><%= assignment.score %> </span>	</td>
 				</tr>
 			<% end %>
 			</table>

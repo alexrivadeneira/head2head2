@@ -1,5 +1,10 @@
 
 
+
+
+
+
+
 <div class="row">
 <div class="col-md-6 col-sm-6">
 	<% @is_current_user_here = false %> 
@@ -11,6 +16,12 @@
 		<% User.find(assignment.user_id).name %>
 	<% end %>
 
+
+
+
+
+
+<!-- the logic that begins here extends ALL the way to the bottom -->
 	<% if @is_current_user_here %>
 
 		<h1><%= @game.title %></h1>
@@ -38,6 +49,8 @@
 </div>
 </div>
 
+
+
 <div class="row">
 <div class="col-xs-6">
 <br><br>
@@ -45,14 +58,18 @@
 		<% ratings_where_already_guessed = [] %>
 
 			<% player_guesses = Guess.where(user_id: @user_id) %>
+			
 			<% player_guesses.each do |guess| %>
-			<% ratings_where_already_guessed  << guess.rating %>
+				<% ratings_where_already_guessed  << guess.rating %>
 			<% end %>
 
-		<%ratings_where_already_guessed%>
+		<%=ratings_where_already_guessed%>
 
 
+
+<!-- there's a nested forloop/each loop here that needs to coem out -->
 	<% @game_assignments.each do |assignment| %>
+	<div class="assignments2">
 		<% all_ratings = User.find(assignment.user_id).ratings %>
 
 		<% all_ratings_minus = all_ratings - ratings_where_already_guessed %>
@@ -62,7 +79,7 @@
 		<% end %>
 
 			<% all_ratings_minus.each do |rating| %>
-
+			<div class="ratings2">
 				<% unless rating.user_id == @user_id %>
 					<p>What do you think <b><%= User.find(rating.user_id).name %></b> thinks about <b><%= Concept.find(rating.concept_id).title %>?</b></p>
 
@@ -85,159 +102,16 @@
 							<%= submit_tag("Disliked") %>
 						<% end %><br> <br>
 
-				<% end %>
-			<% end %>
-	<% end %>
+				<% end %><!-- ends unless -->
+			<% end %><!-- ratings foreach loop -->
+			</div><!-- ratings -->
+	<% end %> <!-- assignments foreach loop -->
+	</div><!--assignments -->
 
 </div><!-- /guess area-->
 </div>
 
-<div class="col-xs-6">
 
-	<% if(player_guesses.count > 0) %>
-	<% end %>
-
-
-	<ul id="outcomes">
-
-	<% player_guesses.each do |guess| %>
-		
-		<% if guess.game_id == @game.id %>
-
-			<% if guess.outcome == true %>
-				
-
-				<li class="outcome-result">
-
-
-					<div class="alert alert-success ">
-	  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-
-	  	
-						<% if (Rating.find(guess.rating_id).opinion.to_i) == 1 %>
-							<%= User.find(Rating.find(guess.rating_id).user_id).name %> liked
-
-						<% elsif (Rating.find(guess.rating_id).opinion.to_i) == 2 %>
-							<%= User.find(Rating.find(guess.rating_id).user_id).name %> disliked
-
-						<% end %>
-
-						<%= Concept.find(Rating.find(guess.rating_id).concept_id).title %>.
-
-						<% if Rating.find(guess.rating_id).explanation %>
-
-
-				<!-- startcomment area -->
-
-							They said <strong>"<%= Rating.find(guess.rating_id).explanation %>."</strong>
-						You were correct.
-
-<% Rating.find(guess.rating_id).chats.each do |chat| %>
-							<% if chat.game_id == @game.id %>
-								<div class="well"><p><strong><%= User.find(chat.user_id).name %></strong></p>
-								<p> &nbsp;&nbsp;&nbsp;&nbsp;<%= chat.text %></p>
-								</div>
-							<% end %>
-							<% end %>
-
-
-							<% @rating_for_comment = Rating.find(guess.rating_id).id %>
-
-							<%= form_tag(:action => "make_chat") do %>
-							<%= hidden_field_tag :user_id, @user_id %>
-							<%= hidden_field_tag :rating_id, @rating_for_comment %>
-							<%= hidden_field_tag :game_id, @game.id %>
-		         			 <%= text_field_tag :text %>
-							<%= submit_tag("Comment!") %>
-
-							<% end %>
-
-
-			<!-- end comment -->
-
-						<% end %>
-
-
-
-
-					
-					
-
-
-
-					</div>
-			 
-			 	
-			
-
-			<% else %>
-
-				<li class="outcome-result">
-					<div class="alert alert-danger ">
-	  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<% if (Rating.find(guess.rating_id).opinion.to_i) == 1 %>
-							<%= User.find(Rating.find(guess.rating_id).user_id).name %> liked
-
-						<% elsif (Rating.find(guess.rating_id).opinion.to_i) == 2 %>
-							<%= User.find(Rating.find(guess.rating_id).user_id).name %> disliked
-
-						<% end %>
-
-						<%= Concept.find(Rating.find(guess.rating_id).concept_id).title %>.
-
-						<% if Rating.find(guess.rating_id).explanation %>
-
-				<!-- startcomment area -->
-
-							They said <strong>"<%= Rating.find(guess.rating_id).explanation %>."</strong>
-						You were wrong.
-
-							<% Rating.find(guess.rating_id).chats.each do |chat| %>
-							<% if chat.game_id == @game.id %>
-								<div class="well"><p><strong><%= User.find(chat.user_id).name %></strong></p>
-								<p> &nbsp;&nbsp;&nbsp;&nbsp;<%= chat.text %></p>
-								</div>
-							<% end %>
-							<% end %>
-
-
-							<% @rating_for_comment = Rating.find(guess.rating_id).id %>
-
-							<%= form_tag(:action => "make_chat") do %>
-							<%= hidden_field_tag :user_id, @user_id %>
-							<%= hidden_field_tag :rating_id, @rating_for_comment %>
-							<%= hidden_field_tag :game_id, @game.id %>
-		         			 <%= text_field_tag :text %>
-							<%= submit_tag("Comment!") %>
-
-							<% end %>
-
-
-			<!-- end comment -->
-
-						<% end %>
-			
-			 		
-			 		</div>			
-
-			<% end %>
-
-
-		<% end %>	
-		</li>
-
-
-		<!-- /outcome-result-->
-
-		<br><br>
-	<% end %>
-
-	</ul>
-
-</div>
-
-
-
-<% else %>
+<% else %> <!-- otherwise, if the currentuser is not here -->
      No game found.
 <% end %>

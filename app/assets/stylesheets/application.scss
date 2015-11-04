@@ -78,8 +78,15 @@
 	top: 0;
 	}
 
-
-
+	.assignments2{
+	background-color: yellow;
+	border: 4px dotted black;
+	}
+	
+	.ratings2{
+	background-color: red;
+	border: 3px solid purple;
+	}
 @import "bootstrap-sprockets";
 @import "bootstrap";
 

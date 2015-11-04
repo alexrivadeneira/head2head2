@@ -87,6 +87,20 @@
 	background-color: red;
 	border: 3px solid purple;
 	}
+
+	.ratings-area{
+	background-color: tan;
+
+	}
+
+	.rating-item{
+	display: none;
+	}
+
+	.ratings-area .rating-item:first-child{
+	display: block;
+	}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 

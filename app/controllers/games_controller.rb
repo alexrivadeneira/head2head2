@@ -79,6 +79,19 @@ class GamesController < ApplicationController
 
   end
 
+  def showoutcomes
+    @user_id = session[:user_id]
+    @game = Game.find(params[:id])
+
+    @user_to_update = User.find(@user_id)
+    @user_to_update.update(rated: true)
+
+    # need to clean up the association here...
+    @game_assignments = @game.assignments
+
+
+  end  
+
   def make_guess
     actual_rating = Rating.find(params["rating_id"])
     actual_rating_outcome = actual_rating.opinion
@@ -109,7 +122,7 @@ class GamesController < ApplicationController
     end
 
 
-    redirect_to(:action => "show", :id => game_id)
+    redirect_to(:action => "showoutcomes", :id => game_id)
 
 
     # get the rating info

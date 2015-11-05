@@ -23,12 +23,18 @@ class ConceptsController < ApplicationController
   end
 
   def make_rating
+
+    if params[:submit_name] == "like"
+      opinion = 1
+    else
+      opinion = 2
+    end
   	user_id = params["user_id"]
   	concept_id = params["concept_id"]
-  	opinion = params["opinion"]
     explanation = params["explanation"]
-  	alex = Rating.create(user_id: user_id, concept_id: concept_id, opinion: opinion, explanation: explanation)
-    puts "-----------PARAMSSSS", params
+
+  	
+    Rating.create(user_id: user_id, concept_id: concept_id, opinion: opinion, explanation: explanation)
     
   	redirect_to(:action => "showconcepts")
 

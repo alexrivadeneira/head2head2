@@ -10,7 +10,7 @@ class GamesController < ApplicationController
 
     Chat.create(rating_id: @comment_rating, user_id: @comment_user, text: @comment_text, game_id: @comment_game_id)
     
-    redirect_to(:action => "show", id: @comment_game_id)
+    redirect_to(:action => "showoutcomes", id: @comment_game_id)
   end
   
   def play

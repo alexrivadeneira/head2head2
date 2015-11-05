@@ -44,32 +44,14 @@
 
 			<%= form_tag(:action => "make_rating") do %>
 
-			<div class="like">
+			
 					<%= form_tag(:action => "make_rating") do %>
 						<%= hidden_field_tag :user_id, @user.id %>
 						<%= hidden_field_tag :concept_id, concept.id %>
-						<%= hidden_field_tag :opinion, 1 %>
-
-					<%= text_area_tag(:explanation, nil, :size => "66x1", class: "like-explain") %>
-
-						<%= submit_tag("Like!") %>
-					
-					<% end %>
-
-
-					
-			</div>
-								<br><br>
-
-			<div class="dislike">
-					<%= form_tag(:action => "make_rating") do %>
-						<%= hidden_field_tag :user_id, @user.id %>
-						<%= hidden_field_tag :concept_id, concept.id %>
-						<%= hidden_field_tag :opinion, 2 %>
-					<%= submit_tag("Dislike!") %>
-					<%= text_area_tag(:explanation, nil, :size => "66x1", class: "dislike-explain") %>
-			</div>
-
+						<%= text_area_tag(:explanation, nil, :size => "44x3") %>
+		
+					<%= submit_tag "Like", :submit_name => "like" %>
+					<%= submit_tag "Dislike"%>
 					
 			<br><br>
 	

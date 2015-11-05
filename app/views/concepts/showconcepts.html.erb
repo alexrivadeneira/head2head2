@@ -54,7 +54,7 @@
 					<%= form_tag(:action => "make_rating") do %>
 						<%= hidden_field_tag :user_id, @user.id %>
 						<%= hidden_field_tag :concept_id, concept.id %>
-						<%= text_area_tag(:explanation, nil, :size => "44x3") %>
+						<%= text_area_tag(:explanation, "", :size => "44x3") %>
 		
 				<br/><br/>
 					<%= button_tag(type: 'submit', submit_name: "like", class: "btn btn-success") do %>

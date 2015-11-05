@@ -1,5 +1,5 @@
 
-<div class="col-xs-6">
+<div class="col-md-12">
 			<% player_guesses = Guess.where(user_id: @user_id) %>
 
 	<% if(player_guesses.count > 0) %>
@@ -21,7 +21,7 @@
 				<li class="outcome-result">
 
 
-					<div class="alert alert-success ">
+					<div class="alert alert-success alert-outcome ">
 	  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 
 	  	
@@ -40,7 +40,9 @@
 
 				<!-- startcomment area -->
 
-							They said <strong>"<%= Rating.find(guess.rating_id).explanation %>."</strong>
+							<% if Rating.find(guess.rating_id).explanation.length > 1 %>
+							They said <strong>"<%= Rating.find(guess.rating_id).explanation %>"</strong>
+							<% end %>
 						You were correct.
 
 <% Rating.find(guess.rating_id).chats.each do |chat| %>
@@ -103,7 +105,9 @@
 
 				<!-- startcomment area -->
 
+							<% if Rating.find(guess.rating_id).explanation.length > 1 %>
 							They said <strong>"<%= Rating.find(guess.rating_id).explanation %>."</strong>
+							<% end %>
 						You were wrong.
 
 							<% Rating.find(guess.rating_id).chats.each do |chat| %>

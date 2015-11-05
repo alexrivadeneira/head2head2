@@ -39,6 +39,9 @@
 		<% if @concepts.count > 0 %>
 			<% @concepts.each do |concept| %>
 					<h4><%= concept.title %> </h4><br><br>
+					<% if concept.image %>
+					<img src="<%=concept.image%>" class="img-responsive" style="max-height:200px;"/>
+					<% end %>
 
 
 

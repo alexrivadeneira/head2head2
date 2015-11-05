@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Concept.create(title: "self driving cars", image: "/assets/heads_logo.png")
+Concept.create(title: "self driving cars", image: "http://blogs-images.forbes.com/sethporges/files/2014/05/googlecar-e1401261602733.jpg")
 Concept.create(title: "In N Out Burger")
 Concept.create(title: "hiking")
 Concept.create(title: "horror movies")

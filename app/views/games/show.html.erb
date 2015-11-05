@@ -81,6 +81,7 @@
 <div class="ratings-area">
 	<% all_appropriate_ratings.each do |rating| %>
 	<div class="rating-item">
+					<img class="user-image-q" src="<%= User.find(rating.user_id).image %>"/>
 					<p>What do you think <b><%= User.find(rating.user_id).name %></b> thinks about <b><%= Concept.find(rating.concept_id).title %>?</b></p>
 
 						<%= form_tag(:action => "make_guess") do %>

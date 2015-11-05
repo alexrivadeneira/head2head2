@@ -37,8 +37,13 @@
 
     <div class="col-sm-3 col-xs-2 text-center">
       <% if session[:user_id] %>
-      <h5><strong><%= session[:username] %> </strong></h5>
-      <span class="glyphicon glyphicon-user"></span><h5><%= User.find(session[:user_id]).average %> points</h5>
+      <h5><strong><%= session[:username] %> </strong></h5> 
+      <% if User.find(session[:user_id]).image %>
+        <img class="user-image" src="<%=User.find(session[:user_id]).image%>">
+      <% else %>
+      <span class="glyphicon glyphicon-user">
+      <% end %>
+      </span><h5><%= User.find(session[:user_id]).average %> points</h5>
        <%end%>
     </div>
 

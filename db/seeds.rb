@@ -217,4 +217,4 @@ Game.create(title: "Group1")
 
 
 
-
+User.create(name: "Alex", password: "password", email: "alex@email.com", image: "https://media.licdn.com/media/AAEAAQAAAAAAAAOHAAAAJDcxZTQ4NTNlLWI5ZDAtNDYyNy1hYjRhLThmMTMzZWJiMjUwOQ.jpg")

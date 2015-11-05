@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Head-to-Head</title>
+  <title>Sherlock Homies</title>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
@@ -17,7 +17,7 @@
 
 	<div id="flash_messages">
 	  <% flash.each do |key, value| %>
-    <div class="well well-lg">
+      <div class="well well-lg">
 	    <%= content_tag(:div, value, :class => "flash #{key}") %>
 	    </div>
     <% end %>
@@ -26,18 +26,26 @@
 
 
 
-	<div class="row">
-  	<div class="col-md-12">
-  		<% if session[:user_id] %>
-  		<h5>Welcome, <%= session[:username] %> </h5>
-  		<h5>Score: <%= User.find(session[:user_id]).average %></h5>
-  	<%end%>
+  <div class="row">
+
+      <div class="col-xs-4">
+      <%= image_tag 'heads_logo.png', :class => "img-responsive logo" %>
+       <span class="text-center"><h4>Sherlock Homies</h4></span>
+    </div>
 
 
-    <%= image_tag 'heads_logo.png', :class => "img-responsive logo" %>
-  	<span class="text-center"><h1>Head-to-Head</h1></span>
-  	</div>
-	</div>
+    <div class="col-xs-6 text-center">
+      <% if session[:user_id] %>
+      <h5>Welcome, <%= session[:username] %> </h5>
+      <h5>Score: <%= User.find(session[:user_id]).average %></h5>
+       <%end%>
+    </div>
+
+
+    <div class="col-xs-2">
+    test
+    </div>
+  </div>
 
 
     <div class="row"> <!-- start navbar -->

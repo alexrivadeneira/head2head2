@@ -61,8 +61,11 @@
 		         			 <%= text_field_tag :text %>
 							<%= submit_tag("Comment!") %>
 
+							<h3><%= link_to "NEXT", controller: "games", action: "show", id: @game.id %> </h3>
+
 							<% end %>
 
+				
 
 			<!-- end comment -->
 

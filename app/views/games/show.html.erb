@@ -28,27 +28,6 @@
 
 
 
-		<h3>Players</h3>
-
-		<div class="table-responsive">
-			<table class="table">
-
-			<th> Player </th>
-			<th> Score </th>
-
-			<% @game_assignments.each do |assignment| %>
-				<tr>
-					<td> <%= User.find(assignment.user_id).name %> </td>
-
-					<td><span class="badge"><%= assignment.score %> </span>	</td>
-				</tr>
-			<% end %>
-			</table>
-		</div>
-
-</div>
-</div>
-
 
 
 
@@ -105,8 +84,8 @@
 		          			<%= hidden_field_tag :outcome_guess, 1 %>
 		          			<%= hidden_field_tag :game_id, @game.id %>
 
-							<%= submit_tag("They liked") %>
-						<% end %><br>
+							<%= submit_tag(":)") %>
+						<% end %> <br/>
 
 						<%= form_tag(:action => "make_guess") do %>
 							<%= hidden_field_tag :user_id, @user_id %>
@@ -114,11 +93,32 @@
 							<%= hidden_field_tag :rating_id, rating.id %>
 		          			<%= hidden_field_tag :outcome_guess, 2 %>
 		          			<%= hidden_field_tag :game_id, @game.id %>
-							<%= submit_tag("Disliked") %>
+							<%= submit_tag(":(") %>
 						<% end %><br> <br>
 		</div><!-- /rating-item -->
 	<% end %>
 </div><!-- /ratings-area -->
+
+
+
+		<h3>Players</h3>
+
+		<div class="table-responsive">
+			<table class="table">
+
+			<th> Player </th>
+			<th> Score </th>
+
+			<% @game_assignments.each do |assignment| %>
+				<tr>
+					<td> <%= User.find(assignment.user_id).name %> </td>
+
+					<td><span class="badge"><%= assignment.score %> </span>	</td>
+				</tr>
+			<% end %>
+			</table>
+		</div>
+
 
 <% else %> <!-- otherwise, if the currentuser is not here -->
      No game found.

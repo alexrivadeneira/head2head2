@@ -21,7 +21,10 @@
 			<h4>Other players who have already joined this game:</h4>
 			
 			<% game.assignments.each do |assignment| %> 
-			<h5><%= User.find(assignment.user_id).name %></h5>
+				<% @user_id = User.find(assignment.user_id) %>
+				<% @user_name = User.find(assignment.user_id).name %>
+
+			<h5><%= link_to @user_name, controller: "users", action: "show", id: @user_id %></h5>
 			
 
 			<% end %>

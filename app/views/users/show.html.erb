@@ -7,10 +7,12 @@
 
 <div class="row">
 <% displayed_user_ratings.each do |rating| %>
-
-<div class="col-md-2">
-	<img style="width: 100px;" class="img-responsive" src=" <%= Concept.find(rating.concept_id).image %>"/>
-</div>
+	<% if rating.opinion == 2 %>
+		<div class="col-md-2">
+			<img style="width: 100px; height: 100px;" class="img-responsive" src=" <%= Concept.find(rating.concept_id).image %>"/>
+		</div>
+	<% else %>
+	<% end %> 
 
 <% end %>
 </div>

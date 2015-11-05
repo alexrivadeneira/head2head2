@@ -12,6 +12,35 @@
  *
  */
 
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+}
+
+.navbar-fixed-top .nav {
+    padding: 15px 0;
+}
+
+.navbar-fixed-top .navbar-brand {
+    padding: 0 15px;
+}
+
+@media(min-width:768px) {
+    body {
+        padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    }
+
+    .navbar-fixed-top .navbar-brand {
+        padding: 15px 0;
+    }
+}
+
+.navbar-brand > img{
+	display: inline-block;
+	position: relative;
+	max-height: 50px;
+}
+
+
  	.user-image-q{
  	max-width: 100px;
  	border-radius: 100%;
@@ -60,6 +89,7 @@
 
 	.outcome-result{
 	list-style: none;
+	width: 100%;
 	}
 
 	.group{

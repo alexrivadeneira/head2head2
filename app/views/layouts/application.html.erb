@@ -25,25 +25,26 @@
 	</div>
 
 
-
   <div class="row">
 
-      <div class="col-xs-4">
-      <%= image_tag 'heads_logo.png', :class => "img-responsive logo" %>
-       <span class="text-center"><h4>Sherlock Homies</h4></span>
+      <div class="col-sm-3 col-xs-4">
+      <a href="/"><%= image_tag 'heads_logo.png', :class => "img-responsive logo" %></a>
     </div>
 
+    <div class="col-sm-4 col-xs-3">
+      <span class="text-center"><h4>Sherlock Homies</h4></span>
+      </div>
 
-    <div class="col-xs-6 text-center">
+    <div class="col-sm-3 col-xs-2 text-center">
       <% if session[:user_id] %>
-      <h5>Welcome, <%= session[:username] %> </h5>
-      <h5>Score: <%= User.find(session[:user_id]).average %></h5>
+      <h5><strong><%= session[:username] %> </strong></h5>
+      <h5><%= User.find(session[:user_id]).average %> points</h5>
        <%end%>
     </div>
 
 
-    <div class="col-xs-2">
-     <%= link_to "Notes", :controller => :access, :action => :index %>
+    <div class="col-sm-2">
+     <span class="btn btn-default"><%= link_to "Notes", :controller => :access, :action => :index, :anchor => "release-notes" %></span>
     </div>
   </div>
 

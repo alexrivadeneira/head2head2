@@ -32,6 +32,8 @@
 
 
 <br><br>
+
+
 <div class="guess-area">
 		<% ratings_where_already_guessed = [] %>
 
@@ -47,6 +49,10 @@
 		<% all_appropriate_ratings = [] %>
 
 <!-- there's a nested forloop/each loop here that needs to coem out -->
+
+<div class="row text-center">
+<div class="col-md-12">
+
 	<% @game_assignments.each do |assignment| %>
 	<div class="assignments2">
 		<% all_ratings = User.find(assignment.user_id).ratings %>
@@ -84,7 +90,9 @@
 		          			<%= hidden_field_tag :outcome_guess, 1 %>
 		          			<%= hidden_field_tag :game_id, @game.id %>
 
-							<%= submit_tag(":)") %>
+							<%= button_tag(type: 'submit', class: "btn btn-success") do %>
+							  <h2><span class="glyphicon glyphicon-thumbs-up"></span> </h2>
+							<% end %>
 						<% end %> <br/>
 
 						<%= form_tag(:action => "make_guess") do %>
@@ -93,12 +101,15 @@
 							<%= hidden_field_tag :rating_id, rating.id %>
 		          			<%= hidden_field_tag :outcome_guess, 2 %>
 		          			<%= hidden_field_tag :game_id, @game.id %>
-							<%= submit_tag(":(") %>
+								<%= button_tag(type: 'submit', class: "btn btn-danger") do %>
+								  <h2><span class="glyphicon glyphicon-thumbs-down"></span> </h2>
+								<% end %>
 						<% end %><br> <br>
 		</div><!-- /rating-item -->
 	<% end %>
 </div><!-- /ratings-area -->
-
+</div>
+</div>
 
 
 		<h3>Players</h3>

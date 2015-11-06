@@ -51,23 +51,22 @@
 			<%= form_tag(:action => "make_rating") do %>
 
 			
-					<%= form_tag(:action => "make_rating") do %>
+				
 						<%= hidden_field_tag :user_id, @user.id %>
 						<%= hidden_field_tag :concept_id, concept.id %>
 						<%= text_area_tag(:explanation, "", :size => "44x3") %>
 		
 				<br/><br/>
-					<%= button_tag(type: 'submit', submit_name: "like", class: "btn btn-success") do %>
-					  <h2><span class="glyphicon glyphicon-thumbs-up"></span> </h2>
-					<% end %>
 
-					<%= button_tag(type: 'submit', submit_name: "dislike", class: "btn btn-danger") do %>
-					  <h2><span class="glyphicon glyphicon-thumbs-down"></span> </h2>
-					<% end %>
+						<%= button_tag(:type => 'submit', :submit_name => "like") %>
+						<%= button_tag(:type => 'submit', :submit_name => "dislike") %>
+		
+
+	
 
 			<br><br><br><br>
 	
-					<% end %>
+					
 
 			<% end %>
 

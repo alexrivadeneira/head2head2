@@ -25,27 +25,6 @@
 	</div>
 
 
-  <div class="row">
-
-      <div class="col-sm-3 col-xs-4">
-      
-    </div>
-
-
-    <div class="col-sm-3 col-xs-2 text-center">
-      <% if session[:user_id] %>
-      <h5><strong><%= session[:username] %> </strong></h5> 
-      <% if User.find(session[:user_id]).image %>
-        <img class="user-image" src="<%=User.find(session[:user_id]).image%>">
-      <% else %>
-      <span class="glyphicon glyphicon-user">
-      <% end %>
-      </span><h5><%= User.find(session[:user_id]).average %> points</h5>
-       <%end%>
-    </div>
-
-  </div>
-
 
 
 
@@ -64,18 +43,35 @@
                 <div class="col-md-4">
                 <a class="navbar-brand" href="/"><%= image_tag 'heads_logo.png', :class => " navbar-brand" %></a> 
                 </div>  
-                                   
+        
+
+        <!-- user profile picture -->      
+            <div class="col-sm-3 col-xs-2 text-center">
+              <% if session[:user_id] %>
+              <h5><strong><%= session[:username] %> </strong></h5> 
+              <% if User.find(session[:user_id]).image %>
+                <img class="user-image" src="<%=User.find(session[:user_id]).image%>">
+              <% else %>
+              <span class="glyphicon glyphicon-user">
+              <% end %>
+              </span><h5><%= User.find(session[:user_id]).average %> points</h5>
+               <%end%>
+            </div>
+
+       <!-- /user-profile-picture -->
+
+
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                 <% if session[:username] %>
                   <li><%= link_to("Logout",  {:controller => "access", :action => "logout"}) %></li>
-                  <li> <%= link_to("View Users",  {:controller => "users", :action => "index"}) %></li>
+                  
                   <li><%= link_to("GUESS",  {:controller => "games", :action => "mygames"}) %></li>
                   <li><%= link_to("RATE",  {:controller => "concepts", :action => "showconcepts"}) %></li>  
             
-                  <li><%= link_to("New Game",  {:controller => "games", :action => "new"}) %></li>                                                               
+                  <li><%= link_to("New Game",  {:controller => "games", :action => "new"}) %></li>                          
                   </ul>
 
         <% else %>
@@ -83,7 +79,10 @@
                   <li><%= link_to("Login",  {:controller => "access", :action => "login"}) %></li>
                            
                     </ul>
-        <%end%>       
+        <%end%>    
+
+
+
             </div>
             <!-- /.navbar-collapse -->
         </div>

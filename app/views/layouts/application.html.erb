@@ -28,48 +28,30 @@
 
 
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-right navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="col-md-4">
-                <a class="navbar-brand" href="/"><%= image_tag 'heads_logo.png', :class => " navbar-brand" %></a> 
-                </div>  
-        
-
-        <!-- user profile picture -->      
-            <div class="col-sm-3 col-xs-2 text-center">
-              <% if session[:user_id] %>
-              <h5><strong><%= session[:username] %> </strong></h5> 
-              <% if User.find(session[:user_id]).image %>
-                <img class="user-image" src="<%=User.find(session[:user_id]).image%>">
-              <% else %>
-              <span class="glyphicon glyphicon-user">
-              <% end %>
-              </span><h5><%= User.find(session[:user_id]).average %> points</h5>
-               <%end%>
-            </div>
-
-       <!-- /user-profile-picture -->
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
 
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+
+          </div>
+    
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">  
+            <ul class="nav navbar-nav navbar-right">
                 <% if session[:username] %>
                   <li><%= link_to("Logout",  {:controller => "access", :action => "logout"}) %></li>
                   
                   <li><%= link_to("GUESS",  {:controller => "games", :action => "mygames"}) %></li>
                   <li><%= link_to("RATE",  {:controller => "concepts", :action => "showconcepts"}) %></li>  
+                  <li class="divider"></li>
             
                   <li><%= link_to("New Game",  {:controller => "games", :action => "new"}) %></li>                          
                   </ul>
@@ -80,19 +62,73 @@
                            
                     </ul>
         <%end%>    
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    
 
 
 
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+
+            <div class="collapse navbar-collapse col-lg-6 col-md-6" >
+                <ul class="nav navbar-nav  navbar-left">
+                    <li><img src="images/genericLogo.png"><!-- <a href="#">MySite.com</a> --></li>
+                </ul>
+            </div> 
+
+            <div class="collapse navbar-collapse navbar-right col-lg-6 col-md-6">
+                <div class="dropdown">
+                    <button id="userMenu" class="btn dropdown-toggle btn-primary" type="button" data-toggle="dropdown">
+                        <span>username@domainName.com </span><span class="caret userButton"></span>
+                    </button>
+
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="userMenu">
+                        <li role="presentation"><a href="#" tabindex="-1" role="menuitem">View Details</a></li>
+                        <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Edit</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Logout</a></li>
+                    </ul>
+                </div>
+            </div>                
+
+
+
+
+
+
+
+            <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="nav navbar-nav navbar-center">
+                <% if session[:username] %>
+                  <li><%= link_to("Logout",  {:controller => "access", :action => "logout"}) %></li>
+                  
+                  <li><%= link_to("GUESS",  {:controller => "games", :action => "mygames"}) %></li>
+                  <li><%= link_to("RATE",  {:controller => "concepts", :action => "showconcepts"}) %></li>  
+                  <li class="divider"></li>
+            
+                  <li><%= link_to("New Game",  {:controller => "games", :action => "new"}) %></li>                          
+                  </ul>
+
+        <% else %>
+                  <li><%= link_to("Sign Up!", new_user_path) %></li>
+                  <li><%= link_to("Login",  {:controller => "access", :action => "login"}) %></li>
+                           
+                    </ul>
+        <%end%> 
             </div>
-            <!-- /.navbar-collapse -->
+
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
         </div>
-        <!-- /.container -->
-    </nav>
-
-
-
-
-
+    </div>
 
 
 <%= yield %>

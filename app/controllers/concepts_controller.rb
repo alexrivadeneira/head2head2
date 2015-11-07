@@ -24,14 +24,14 @@ class ConceptsController < ApplicationController
 
   def make_rating
 
-    puts "      kfkasfkldkf jkdsfk ksdf",  params
 
-    if params[:submit_name] == "like"
-      opinion = 2
 
-    elsif params[:submit_name] == "dislike"
-
+    if params[:commit] == "Like"
       opinion = 1
+
+    elsif params[:submit_name] == "Dislike"
+
+      opinion = 2
 
     end
 

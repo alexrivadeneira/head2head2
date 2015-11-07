@@ -24,12 +24,13 @@
 					<div class="alert alert-success alert-outcome ">
 	  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 
-	  	
+	  				<%= User.find(Rating.find(guess.rating_id).user_id).name %> 
+
 						<% if (Rating.find(guess.rating_id).opinion.to_i) == 1 %>
-							<%= User.find(Rating.find(guess.rating_id).user_id).name %> liked
+							liked
 
 						<% elsif (Rating.find(guess.rating_id).opinion.to_i) == 2 %>
-							<%= User.find(Rating.find(guess.rating_id).user_id).name %> disliked
+							disliked
 
 						<% end %>
 
@@ -91,11 +92,14 @@
 				<li class="outcome-result">
 					<div class="alert alert-danger ">
 	  				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+	  				<%= User.find(Rating.find(guess.rating_id).user_id).name %>
+
 						<% if (Rating.find(guess.rating_id).opinion.to_i) == 1 %>
-							<%= User.find(Rating.find(guess.rating_id).user_id).name %> liked
+							 liked
 
 						<% elsif (Rating.find(guess.rating_id).opinion.to_i) == 2 %>
-							<%= User.find(Rating.find(guess.rating_id).user_id).name %> disliked
+							disliked
 
 						<% end %>
 

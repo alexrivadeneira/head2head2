@@ -93,6 +93,8 @@ class GamesController < ApplicationController
   end  
 
   def make_guess
+
+    puts "GUESS PARAMS", params
     actual_rating = Rating.find(params["rating_id"])
     actual_rating_outcome = actual_rating.opinion
 
@@ -104,6 +106,7 @@ class GamesController < ApplicationController
 
 
     if actual_rating_outcome.to_i == outcome_guess.to_i
+      puts "CORRRECT!"
       game_to_update = Game.find(game_id)
       game_to_update.total += 1
       game_to_update.save
@@ -118,6 +121,7 @@ class GamesController < ApplicationController
       assignment_update.save
 
     else 
+      puts "WRONG"
       Guess.create(user_id: guessing_user, rating_id: actual_rating.id, outcome: false, game_id: game_id )
     end
 

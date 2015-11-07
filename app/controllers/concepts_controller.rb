@@ -29,7 +29,7 @@ class ConceptsController < ApplicationController
     if params[:commit] == "Like"
       opinion = 1
 
-    elsif params[:submit_name] == "Dislike"
+    elsif params[:commit] == "Dislike"
 
       opinion = 2
 

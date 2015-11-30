@@ -1,6 +1,8 @@
 class ConceptsController < ApplicationController
 
   before_action :confirmed_logged_in
+  def create
+  end
 
   def showconcepts
 

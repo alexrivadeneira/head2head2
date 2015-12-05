@@ -43,7 +43,7 @@
 			<% @concepts.each do |concept| %>
 					<h4><%= concept.title %> </h4><br><br>
 					<% if concept.image %>
-					<img src="<%=concept.image%>" class="img-responsive" style="max-height:200px;"/>
+					<img src="<%=concept.image%>" class="img-responsive" style="max-height:200px; margin: 0 auto;"/>
 					<% end %>
 
 
@@ -54,7 +54,9 @@
 				
 						<%= hidden_field_tag :user_id, @user.id %>
 						<%= hidden_field_tag :concept_id, concept.id %>
-						<%= text_area_tag(:explanation, "", :size => "44x3") %>
+
+						<p class="comment-note">Comment:</p>
+						<%= text_area_tag(:explanation, "", :size => "33x3") %>
 		
 				<br/><br/>
 

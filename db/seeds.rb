@@ -206,17 +206,8 @@ Concept.create(title: "NPR")
 Concept.create(title: "investing")
 
 
-Game.create(title: "Gryffindor")
-Game.create(title: "Hufflepuff")
-Game.create(title: "Ravenclaw")
-Game.create(title: "Slytherin")
-Game.create(title: "Stanford")
-Game.create(title: "Friends")
-Game.create(title: "Bay Area Youngsters - BAY")
-Game.create(title: "Draw Group")
-Game.create(title: "Family")
-Game.create(title: "Best Study Group")
-Game.create(title: "Group1")
+Game.create(title: "Haas Seed Fund")
+Game.create(title: "Launch")
 
 
 

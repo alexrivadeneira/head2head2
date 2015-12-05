@@ -4,7 +4,7 @@
 <% @displayed_user = params[:id] %>
 
 <% displayed_user_ratings = Rating.where(user_id: @displayed_user) %>
-
+<p> User Likes </p>
 <div class="row">
 <% displayed_user_ratings.each do |rating| %>
 	<% if rating.opinion == 2 %>
